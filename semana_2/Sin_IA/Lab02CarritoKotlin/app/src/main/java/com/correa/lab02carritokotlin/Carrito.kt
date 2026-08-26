@@ -33,6 +33,14 @@ fun mostrarDetalle(productos: List<Producto>) {
     println("----------------------------------------")
 }
 
+fun calcularDescuento(total: Double): Double {
+    return when {
+        total > 5000 -> total * 0.10
+        total > 3000 -> total * 0.05
+        else -> 0.0
+    }
+}
+
 
 
 fun main() {
