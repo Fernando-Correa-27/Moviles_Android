@@ -1,11 +1,9 @@
 package com.correa.lab02carritokotlin
-
 data class Producto(
     val nombre: String,
     val precio: Double,
     var cantidad: Int
 )
-
 fun calcularSubtotal(productos: List<Producto>): Double {
     var subtotal = 0.0
     for (p in productos) {
@@ -41,7 +39,9 @@ fun calcularDescuento(total: Double): Double {
     }
 }
 
-
+fun buscarProducto(productos: List<Producto>, nombre: String): Producto? {
+    return productos.find { it.nombre.equals(nombre, ignoreCase = true) }
+}
 
 fun main() {
     println("=========================================")
@@ -88,4 +88,15 @@ fun main() {
         else -> println("Sin descuento aplicado (el total no supera S/ 3000)")
     }
     println(String.format("%-22s: S/ %8.2f", "TOTAL CON DESCUENTO", totalConDescuento))
+
+    println()
+    val encontrado = buscarProducto(carrito, "Mouse Logitech")
+    println("Buscar 'Mouse Logitech': ${encontrado ?: "no encontrado"}")
+
+    carrito.removeIf { it.nombre == "Audifonos Sony" }
+    println("Carrito luego de eliminar 'Audifonos Sony':")
+    mostrarDetalle(carrito)
+
+    println()
+    println("Gracias por su compra, $nombreCliente!")
 }
