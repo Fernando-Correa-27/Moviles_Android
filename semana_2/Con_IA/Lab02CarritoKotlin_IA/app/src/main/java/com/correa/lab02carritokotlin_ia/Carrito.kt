@@ -1,10 +1,6 @@
 package com.correa.lab02carritokotlin_ia
 import kotlin.system.exitProcess
 
-/**
- * Representa un producto dentro del carrito.
- * La lógica de cálculo de su propio importe vive dentro de la clase (encapsulamiento).
- */
 class Producto(
     val nombre: String,
     val precio: Double,
@@ -17,15 +13,10 @@ class Producto(
         String.format("%-20s x%d  S/ %8.2f", nombre, cantidad, importe)
 }
 
-/**
- * Representa al cliente que realiza la compra.
- */
+
 class Cliente(val nombre: String)
 
-/**
- * Encapsula toda la lógica de negocio del carrito: agregar, eliminar,
- * buscar productos y calcular subtotal, IGV, descuento y total.
- */
+
 class Carrito(private val cliente: Cliente) {
 
     private val productos = mutableListOf<Producto>()
@@ -110,10 +101,6 @@ class Carrito(private val cliente: Cliente) {
     }
 }
 
-/**
- * Maneja la interacción por consola (el "prompt"): muestra el menú,
- * lee la entrada del usuario y delega cada acción al Carrito.
- */
 class MenuConsola(private val carrito: Carrito) {
 
     fun iniciar() {
